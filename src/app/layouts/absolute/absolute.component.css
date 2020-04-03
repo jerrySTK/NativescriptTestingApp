@@ -1,0 +1,27 @@
+/* Add mobile styles for the component here.  */
+/* Add mobile styles for the component here.  */
+
+AbsoluteLayout {
+    border-color: blue;
+    border-width: 5;
+    padding: 5;
+    height: 300;
+}
+
+Label {
+    width: 50;
+    height: 50;
+}
+
+#i1 {
+    background: yellow;
+}
+
+#i2 {
+    background: green;
+}
+
+#i3 {
+    background: lightpink;
+}
+/* Add mobile styles for the component here.  */
