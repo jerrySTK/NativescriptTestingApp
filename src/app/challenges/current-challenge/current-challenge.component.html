@@ -1,9 +1,19 @@
-<ListView [items]="currentChallenges" (itemTap)="onTapItem($event)">
-    <ng-template let-challenge="item" let-i="index">
-        <GridLayout rows="40,auto" columns="50,*">
-            <Label [text]="i" row="0" col="0" ></Label>
-            <Label [text]="challenge" row="0" col="1"></Label>
-            <Label text="item desc 3" row="1" col="1" colSpan="2"></Label>
-        </GridLayout>
-    </ng-template>
-</ListView>
+<ns-action-bar [title]="'Current Challenge!'">
+    <ActionItem ios.position="right"
+                android.position="actionBar"
+                nsRouterLink="/challenges/replace"
+                pageTransition="slideLeft">
+        <label text="Replace"></label>
+    </ActionItem>
+    <ActionItem ios.position="right"
+                android.position="actionBar"
+                nsRouterLink="/challenges/edit"
+                pageTransition="slideLeft">
+        <label text="Edit"></label>
+    </ActionItem>
+</ns-action-bar>
+<StackLayout>
+    <Label text="Current challenge"></Label>
+    <Button text="Edit" (tap)="onEdit()"></Button>
+    <Button text="Change Status" (tap)="onChageStatus()"></Button>
+</StackLayout>

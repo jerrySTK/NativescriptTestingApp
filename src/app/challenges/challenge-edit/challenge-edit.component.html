@@ -1,4 +1,7 @@
+<ns-action-bar [title]="isCreating ? 'Create':'Edit'" [showBackButton]="true">
+</ns-action-bar>
 <FlexboxLayout justifyContent="space-around">
-    <TextField [(ngModel)]="challengeDescription"></TextField>
-    <Button class="btn" text="Set" (tap)="onSetChallenge()" ></Button>
+    <!-- <TextField [(ngModel)]="challengeDescription"></TextField>
+    <Button class="btn" text="Set" (tap)="onSetChallenge()" ></Button> -->
+    <Label text="Edit Page"></Label>
 </FlexboxLayout>

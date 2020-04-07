@@ -33,3 +33,11 @@ Button.-primary {
     border-radius: 30%;
     margin: 5 0;
 }
+
+.drawer-container {
+    background: linear-gradient(140deg,#2b0c72,#5c3fa0);
+    horizontal-align: left;
+    flex-direction: column;
+    align-items: center;
+    padding: 20;
+}
