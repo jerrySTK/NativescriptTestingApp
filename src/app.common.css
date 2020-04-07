@@ -1,0 +1,14 @@
+@import "~@nativescript/theme/css/core.css";
+@import "~@nativescript/theme/css/default.css";
+
+.drawer-container {
+    background: linear-gradient(140deg,#2b0c72,#5c3fa0);
+    horizontal-align: left;
+    flex-direction: column;
+    align-items: center;
+    padding: 20;
+}
+
+Button.-primary {
+    font-size: 18;
+}
