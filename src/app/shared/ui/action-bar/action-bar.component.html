@@ -4,11 +4,11 @@
                        android.systemIcon="ic_menu_back"
                        (tap)="goBack()"></NavigationButton>
     <NavigationButton
-    *ngIf="hasMenu"
-    icon="res://menu_black"
-    (tap)="onToggleSideDrawer()"></NavigationButton>
+        *ngIf="android && hasMenu"
+        icon="res://menu"
+        (tap)="onToggleSideDrawer()"></NavigationButton>
     <ActionItem ios.position="left" *ngIf="!android && hasMenu">
-        <label text="Menu"></label>
+        <label text="&#xf0c9;" class="fa m-5"></label>
     </ActionItem>
     <ng-content>
     </ng-content>

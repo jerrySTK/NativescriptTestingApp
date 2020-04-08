@@ -1,2 +1,68 @@
 @import "~@nativescript/theme/core";
+
+@import './app/theme/colors';
+$btn-color: $primary;
 @import "~@nativescript/theme/blue";
+
+
+
+.fa {
+    font-family: 'FontAwesome','font-awesome';
+}
+
+.of {
+    font-family: 'Oswald','Oswald-Regular','Oswald-Bold';
+}
+
+ActionBar {
+    background-color: $primary;
+    color: white;
+}
+
+.h1 {
+    color: $primary;
+}
+
+.form-control {
+    border-bottom-color: #7c015d;
+    border-bottom-width: 2;
+    margin: 5 0;
+    font-size: 20;
+    padding: 8 4;
+}
+
+.drawer-container {
+    background: linear-gradient(140deg,#2b0c72,#5c3fa0);
+    horizontal-align: left;
+    flex-direction: column;
+    align-items: center;
+    padding: 20;
+
+    .btn {
+        width: 80%;
+        font-size: 24;
+        height: 45;
+    }
+}
+
+.form {
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.input {
+    border-bottom-width:2;
+    border-bottom-color: $primary;
+    width: 100%;
+}
+
+.label {
+    color: $primary;
+    font-weight: bold;
+}
+
+.input-field {
+    width: 80%;
+}

@@ -1,7 +1,4 @@
 <ns-action-bar title="Todays Challenge"></ns-action-bar>
-<StackLayout>
-    <Label text="Today Challenge!"></Label>
-    <Button text="today works!" class="btn btn-primary"></Button>
-
-    <!-- <Button text="CurrentChallenge" class="btn btn-primary" nsRouterLink="/current-challenge" pageTransition="slideLeft"></Button> -->
-</StackLayout>
+<GridLayout>
+    <ns-edit-challenge-status (actionSelected)="onHandledInput($event)" [cancelText]="'Reset'"></ns-edit-challenge-status>
+</GridLayout>

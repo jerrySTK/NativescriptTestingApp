@@ -1,7 +1,13 @@
 <ns-action-bar [title]="isCreating ? 'Create':'Edit'" [showBackButton]="true">
 </ns-action-bar>
-<FlexboxLayout justifyContent="space-around">
-    <!-- <TextField [(ngModel)]="challengeDescription"></TextField>
-    <Button class="btn" text="Set" (tap)="onSetChallenge()" ></Button> -->
-    <Label text="Edit Page"></Label>
+<FlexboxLayout class="form">
+    <StackLayout class="input-field">
+        <Label class="label" text="Title"></Label>
+        <TextField class="input"></TextField>
+    </StackLayout>
+    <StackLayout class="input-field">
+        <Label class="label" text="Description"></Label>
+        <TextField class="input"></TextField>
+    </StackLayout>
+    <Button class="btn btn-primary" text="Save"></Button>
 </FlexboxLayout>

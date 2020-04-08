@@ -17,7 +17,7 @@ export class DayModalComponent implements OnInit {
       console.log(this.params.date);
   }
 
-  onCompleted(status: string) {
+  onHandledInput(status: string) {
     this.modalParams.closeCallback(status);
   }
 

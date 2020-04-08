@@ -1,0 +1,35 @@
+@import '../../theme/colors';
+
+FlexboxLayout {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn-good {
+    background: white;
+    border-color:$good;
+    border-width: 2;
+    border-radius: 25;
+    color: black;
+    width: 40%;
+}
+
+.btn-danger {
+    background:white;
+    border-color:$danger;
+    border-width: 2;
+    border-radius: 25;
+    color: black;
+    width: 40%;
+}
+
+.btn-default {
+    background: white;
+    border-color:$flat-border;
+    border-width: 2;
+    border-radius: 25;
+    color: black;
+    width: 40%;
+}

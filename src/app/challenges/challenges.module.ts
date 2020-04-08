@@ -6,6 +6,7 @@ import { CurrentChallengeComponent } from "./current-challenge/current-challenge
 import {  NativeScriptFormsModule, NativeScriptCommonModule } from "nativescript-angular";
 import { ChallengesRoutingModule } from "./challenges-routing.module";
 import { AppSharedModule } from "../shared/modules/app-shared.module";
+import { EditChallengeStatusComponent } from './edit-challenge-status/edit-challenge-status.component';
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import { AppSharedModule } from "../shared/modules/app-shared.module";
         ChallengeTabsComponent,
         DayModalComponent,
         TodayComponent,
-        CurrentChallengeComponent
+        CurrentChallengeComponent,
+        EditChallengeStatusComponent
     ],
     entryComponents: [ DayModalComponent],
     schemas: [
