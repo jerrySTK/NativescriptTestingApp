@@ -1,27 +1,33 @@
-<ns-action-bar [title]="'Current Challenge!'" >
+<ns-action-bar [title]="'Current Challenge!'">
     <ActionItem ios.position="right" android.position="actionBar" nsRouterLink="/challenges/replace"
         pageTransition="slideLeft">
         <label text="&#xf0fe;" ios:class="fa p-5" android:class="fa p-10" android:fontSize="24"></label>
     </ActionItem>
     <ActionItem ios.position="right" android.position="actionBar" nsRouterLink="/challenges/edit"
-        pageTransition="slideLeft">
+        pageTransition="slideLeft" *ngIf="editEnable">
         <label text="&#xf044;" ios:class="fa p-5" android:class="fa p-10" android:fontSize="24"></label>
     </ActionItem>
 </ns-action-bar>
 <ScrollView>
-    <FlexboxLayout class="page">
+    <FlexBoxLayout *ngIf="currentChallenge == null" flexDirection="column" alignItems="center">
+        <Label class="h2" text="No Challenge Found"></Label>
+        <Button text="Create one" [nsRouterLink]="['/challenges/create']" pageTransition="slide"></Button>
+    </FlexBoxLayout>
+    <FlexboxLayout class="page" *ngIf="currentChallenge != null">
         <StackLayout>
-            <Label class="h1 text-center of" text="Current challenge title"></Label>
-            <Label class="body text-center of" text="This is a description of the challenge"></Label>
+            <Label class="h1 text-center of" [text]="currentChallenge.title"></Label>
+            <Label class="body text-center of" [text]="currentChallenge.description"></Label>
         </StackLayout>
         <GridLayout rows="auto,*,*,*,*,*,*" columns="*,*,*,*,*,*,*">
             <Label class="text-center week-day-label" width="100%" *ngFor="let wd of weekDays; index as i" [text]="wd"
                 row="0" [col]="i"></Label>
-            <FlexboxLayout class="day" *ngFor="let d of days" [col]="d.dayInWeek" [row]="d.rowPos">
-                <Label class="text-center"
-                [text]="d.dayInMonth"
-                (tap)="onChageStatus(d.cdate)">
-                </Label>
+            <FlexboxLayout class="day"
+                [ngClass]="{'not-settable' : !getIsSettable(d.dayInMonth), 'completed': getIsCompleted(d), 'failed':getIsFailed(d)}"
+                (tap)="onChangeStatus(d.date,currentChallenge.title,d.status)"
+                *ngFor="let d of currentChallenge.days"
+                [col]="d.dayInWeek"
+                [row]="d.rowPos">
+                <Label class="text-center" [text]="d.dayInMonth"></Label>
             </FlexboxLayout>
         </GridLayout>
     </FlexboxLayout>

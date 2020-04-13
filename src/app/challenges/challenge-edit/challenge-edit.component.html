@@ -2,12 +2,28 @@
 </ns-action-bar>
 <FlexboxLayout class="form">
     <StackLayout class="input-field">
-        <Label class="label" text="Title"></Label>
-        <TextField class="input"></TextField>
+        <Label class="label" text="Title" [ngClass]="{ invalid: titleCtrl.invalid && titleCtrl.touched}"></Label>
+        <TextField class="input"
+                   returnKeyType="next"
+                   required
+                   [(ngModel)]="challenge.title"
+                   #titleCtrl="ngModel"></TextField>
+        <Label class="error"
+               *ngIf="titleCtrl.invalid && titleCtrl.touched && titleCtrl.errors.required"
+               text="Title is required"></Label>
     </StackLayout>
     <StackLayout class="input-field">
-        <Label class="label" text="Description"></Label>
-        <TextField class="input"></TextField>
+        <Label class="label" text="Description" [ngClass]="{ invalid: descCtrl.invalid && descCtrl.touched}"></Label>
+        <TextView class="input"
+                  returnKeyType="done"
+                  [(ngModel)]="challenge.description"
+                  #descCtrl="ngModel"></TextView>
+        <Label class="error"
+               *ngIf="descCtrl.invalid && descCtrl.touched && descCtrl.errors.required"
+               text="Description is required"></Label>
     </StackLayout>
-    <Button class="btn btn-primary" text="Save"></Button>
+    <Button class="btn btn-primary"
+            text="Save"
+            [isEnabled]="descCtrl.valid && titleCtrl.valid"
+            (tap)="onSubmit()"></Button>
 </FlexboxLayout>

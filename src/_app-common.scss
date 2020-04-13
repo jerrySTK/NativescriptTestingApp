@@ -45,23 +45,47 @@ ActionBar {
     }
 }
 
+.btn-flat {
+    background: transparent;
+    border-color: transparent;
+    border-width: 1;
+    color: $primary;
+}
+
+.ng-invalid.ng-touched {
+    color: red;
+    border-bottom-color: red;
+}
+
 .form {
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
+
+    .input {
+        border-bottom-width:2;
+        border-bottom-color: $primary;
+        width: 80%;
+    }
+
+    .error {
+        color: red;
+    }
 }
 
 
-.input {
-    border-bottom-width:2;
-    border-bottom-color: $primary;
-    width: 100%;
-}
+
 
 .label {
     color: $primary;
     font-weight: bold;
 }
+
+.invalid {
+    color: red;
+}
+
+
 
 .input-field {
     width: 80%;

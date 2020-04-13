@@ -8,20 +8,20 @@ FlexboxLayout {
 
 
 .btn-good {
-    background: white;
+    background: $good;
     border-color:$good;
     border-width: 2;
     border-radius: 25;
-    color: black;
+    color: white;
     width: 40%;
 }
 
 .btn-danger {
-    background:white;
+    background:$danger;
     border-color:$danger;
     border-width: 2;
     border-radius: 25;
-    color: black;
+    color: white;
     width: 40%;
 }
 
@@ -32,4 +32,26 @@ FlexboxLayout {
     border-radius: 25;
     color: black;
     width: 40%;
+}
+
+.btn-check{
+    font-size: 20;
+    padding-top: 5;
+}
+
+.animate-button {
+    animation-name: slide-up;
+    animation-iteration-count: 1;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(-30);
+    }
+    to {
+        transform: translateY(0);
+    }
 }

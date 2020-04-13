@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular';
-import { Page, isAndroid } from 'tns-core-modules/ui/page/page';
-
+import { Page } from 'tns-core-modules/ui/page/page';
+import * as application from "tns-core-modules/application";
 @Component({
     selector: 'ns-challenge-tabs',
     templateUrl: './challenge-tabs.component.html',
@@ -19,6 +19,7 @@ export class ChallengeTabsComponent implements OnInit {
 
 
     ngOnInit() {
+
         this.router.navigate([{
             outlets: {
                 today: ['today'],
@@ -27,8 +28,22 @@ export class ChallengeTabsComponent implements OnInit {
         }], {
             relativeTo: this.active
         });
-
         this.page.actionBarHidden = true;
+        this.registerEvents();
+    }
+
+    private registerEvents() {
+        application.on(application.resumeEvent, (args) => {
+            console.log("NS : resumeEvent");
+            this.router.navigate([{
+                outlets: {
+                    today: ['today'],
+                    current: ['current-challenge']
+                }
+            }], {
+                relativeTo: this.active
+            });
+        });
     }
 
 }

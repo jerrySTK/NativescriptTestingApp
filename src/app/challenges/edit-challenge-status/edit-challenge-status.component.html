@@ -1,5 +1,16 @@
 <FlexboxLayout>
-    <Button text="Complete" class="btn-good" (tap)="onAction('complete')"></Button>
-    <Button text="Failed" class="btn-danger" (tap)="onAction('fail')"></Button>
-    <Button [text]="cancelText" class="btn-default" (tap)="onAction('cancel')"></Button>
+    <Button text="Complete" class="btn-good" (tap)="onAction(statuses.Completed)"
+        *ngIf="selectedAction != statuses.Completed"></Button>
+    <FlexboxLayout class="btn btn-good animate-button btn-check" flexDirection="column" justifyContent="center"
+        *ngIf="selectedAction == statuses.Completed">
+        <Label text="&#xf00c;" class="fa"></Label>
+    </FlexboxLayout>
+    <Button text="Failed" class="btn-danger" (tap)="onAction(statuses.Failed)"
+        *ngIf="selectedAction != statuses.Failed"></Button>
+    <FlexboxLayout class="btn btn-danger animate-button btn-check" flexDirection="column" justifyContent="center"
+        *ngIf="selectedAction == statuses.Failed">
+        <Label text="&#xf00c;" class="fa"></Label>
+    </FlexboxLayout>
+    <Button [text]="cancelText" class="btn-default" (tap)="onAction(statuses.Cancel)"></Button>
+
 </FlexboxLayout>

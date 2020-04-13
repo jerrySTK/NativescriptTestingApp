@@ -1,3 +1,5 @@
-<FlexboxLayout justifyContent="center" alignItems="center">
-    <ns-edit-challenge-status (actionSelected)="onHandledInput($event)"></ns-edit-challenge-status>
+<FlexboxLayout justifyContent="center" alignItems="center" flexDirection="column">
+    <Label class="h2" [text]="params.title"></Label>
+    <Label [text]="params.date | date: 'full'"></Label>
+    <ns-edit-challenge-status (actionSelected)="onHandledInput($event)" [selectedAction]="params.status"  ></ns-edit-challenge-status>
 </FlexboxLayout>

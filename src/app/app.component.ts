@@ -23,6 +23,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngOnInit() {
         this.uiService.rootVCRef = this.vcRef;
+
     }
 
     ngAfterViewInit() {

@@ -1,4 +1,12 @@
 <ns-action-bar title="Todays Challenge"></ns-action-bar>
-<GridLayout>
-    <ns-edit-challenge-status (actionSelected)="onHandledInput($event)" [cancelText]="'Reset'"></ns-edit-challenge-status>
-</GridLayout>
+<StackLayout *ngIf="currentChallenge$ | async as currentChallenge">
+    <FlexboxLayout *ngIf="currentChallenge != null" flexDirection="column" justifyContent="center" alignItems="center">
+        <Label class="h2" [text]="currentChallenge.currentDay.date"></Label>
+        <Label class="h4" [text]="currentChallenge.title"></Label>
+        <ns-edit-challenge-status (actionSelected)="onHandledInput($event)" [cancelText]="'Reset'" [selectedAction]="currentChallenge.currentDay.status">
+        </ns-edit-challenge-status>
+    </FlexboxLayout>
+    <FlexboxLayout *ngIf="currentChallenge == null" justifyContent="center" alignItems="center">
+        <Label text="No Challenge Found"></Label>
+    </FlexboxLayout>
+</StackLayout>

@@ -1,8 +1,36 @@
-<TabView androidTabsPosition="bottom"
-         androidSelectedTabHighligthColor="#7c015d"
-         selectedTabTextColor="#7c015d">
-    <page-router-outlet *tabItem="{title: 'Today', iconSource:'res://check'}" name="today">
-    </page-router-outlet>
-    <page-router-outlet *tabItem="{title: 'Current challenge',iconSource:'res://trophy'}" name="current">
-    </page-router-outlet>
-</TabView>
+<!-- <TabView androidTabsPosition="bottom" androidSelectedTabHighlightColor="#7c015d" selectedTabTextColor="#7c015d" heigth="100%" width="100%">
+    <TabViewItem title="Today" iconSource="res://check">
+
+    </TabViewItem>
+    <TabViewItem title="Current Challenge" iconSource="res://trophy">
+
+    </TabViewItem>
+</TabView> -->
+
+<BottomNavigation selectedIndex="1">
+
+    <!-- The bottom tab UI is created via TabStrip (the containier) and TabStripItem (for each tab)-->
+    <TabStrip>
+        <TabStripItem>
+            <Label text="Today"></Label>
+            <Image src="res://check" ></Image>
+        </TabStripItem>
+        <TabStripItem class="special">
+            <Label text="Current Challenge"></Label>
+            <Image src="res://trophy"></Image>
+        </TabStripItem>
+    </TabStrip>
+
+    <!-- The number of TabContentItem components should corespond to the number of TabStripItem components -->
+    <TabContentItem>
+        <GridLayout>
+            <page-router-outlet name="today"></page-router-outlet>
+        </GridLayout>
+    </TabContentItem>
+    <TabContentItem>
+        <GridLayout>
+            <page-router-outlet name="current"></page-router-outlet>
+        </GridLayout>
+    </TabContentItem>
+
+</BottomNavigation>

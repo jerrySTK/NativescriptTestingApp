@@ -1,6 +1,19 @@
 
-<ns-action-bar title="Login" [showBackButton]="false" [hasMenu]="false"></ns-action-bar>
-<StackLayout>
-    <Label text="Login Page"></Label>
-    <Button text="Login" class="btn btn-primary" (tap)="onLogin()"></Button>
-</StackLayout>
+<ns-action-bar [title]="isLoginForm ? 'Login':'Sign up'" [showBackButton]="false" [hasMenu]="false"></ns-action-bar>
+
+<FlexboxLayout class="nt-form form" flexDirection="column" [formGroup]="form">
+    <StackLayout class="nt-input">
+        <Label text="Username" class="font-weight-bold m-b-5"></Label>
+        <TextField class="input" formControlName="username" returnKeyType="next" autocapitalizationType="none"></TextField>
+        <Label class="error" *ngIf="form.controls.username.invalid && form.controls.username.touched" text="Username is required" ></Label>
+    </StackLayout>
+    <StackLayout class="nt-input">
+        <Label text="Password" class="font-weight-bold m-b-5"></Label>
+        <TextField class="input" formControlName="password" returnKeyType="done" secure="true" required></TextField>
+        <Label class="error" *ngIf="form.controls.password.invalid && (form.controls.password.touched || form.controls.password.dirty)" text="Valid password required" ></Label>
+    </StackLayout>
+    <StackLayout>
+        <Button [text]="isLoginForm ? 'Login':'Register'" class="btn btn-primary" (tap)="onLogin()" [isEnabled]="form.valid"></Button>
+        <Button type="Sign up" class="btn" text="Switch" (tap)="onSwitch()"></Button>
+    </StackLayout>
+</FlexboxLayout>
