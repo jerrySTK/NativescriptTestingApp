@@ -1,5 +1,5 @@
 <ns-action-bar title="Todays Challenge"></ns-action-bar>
-<StackLayout *ngIf="currentChallenge$ | async as currentChallenge">
+<StackLayout *ngIf="currentChallenge$ | async as currentChallenge; else loading">
     <FlexboxLayout *ngIf="currentChallenge != null" flexDirection="column" justifyContent="center" alignItems="center">
         <Label class="h2" [text]="currentChallenge.currentDay.date"></Label>
         <Label class="h4" [text]="currentChallenge.title"></Label>
@@ -10,3 +10,8 @@
         <Label text="No Challenge Found"></Label>
     </FlexboxLayout>
 </StackLayout>
+<ng-template #loading>
+    <FlexboxLayout justifyContent="center" alignItems="center">
+        <ActivityIndicator [busy]="true"></ActivityIndicator>
+    </FlexboxLayout>
+</ng-template>

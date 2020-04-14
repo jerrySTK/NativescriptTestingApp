@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { take, map } from 'rxjs/operators';
 import { Challenge } from './models/challenge';
-import { DayStatus } from './models/day.interface';
+import { DayStatus, IDay } from './models/day.interface';
 import { HttpClient } from '@angular/common/http';
-
+import * as firebase from "nativescript-plugin-firebase";
 @Injectable({
     providedIn: 'root'
 })
@@ -20,17 +20,23 @@ export class ChallengesService {
             new Date().getFullYear(),
             new Date().getMonth());
         console.log("Challenge Create!");
+        //firebase.push('challenges',challenge);
 
-        this.http.put(this.firebaseUrl + 'challenge',challenge).subscribe( response => {
+        this.sendToServer(challenge);
+        this._currentChallenge.next(challenge);
+    }
+
+    private sendToServer(challenge: Challenge){
+        this.http.put(this.firebaseUrl + 'challenge.json',challenge).subscribe( response => {
             console.log(response);
         });
-
-        this._currentChallenge.next(challenge);
     }
 
     edit(title: string, description: string){
         this.currentChallenge.pipe(take(1)).subscribe(c=> {
-            this._currentChallenge.next(new Challenge(title,description,c.year,c.month,c.days));
+            const ch = new Challenge(title,description,c.year,c.month,c.days);
+            this._currentChallenge.next(ch);
+            this.sendToServer(ch);
         });
     }
 
@@ -53,7 +59,18 @@ export class ChallengesService {
             console.log('Updating challenge');
             console.log(ch);
             this._currentChallenge.next(ch);
+            this.sendToServer(ch);
         })
+    }
+
+
+    fetchCurrentChallenge(): Observable<Challenge> {
+        return this.http.get<{title:string,description:string,year:number,month:number,_days:IDay[]}>(this.firebaseUrl + 'challenge.json')
+                        .pipe(map(response=> {
+                            const c = new Challenge(response.title,response.description,response.year,response.month,response._days);
+                            this._currentChallenge.next(c)
+                            return c;
+                        }));
     }
 
     get currentChallenge() {

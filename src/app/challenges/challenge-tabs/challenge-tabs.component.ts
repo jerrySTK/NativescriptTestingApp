@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular';
 import { Page } from 'tns-core-modules/ui/page/page';
 import * as application from "tns-core-modules/application";
+import { ChallengesService } from '../challenges.service';
 @Component({
     selector: 'ns-challenge-tabs',
     templateUrl: './challenge-tabs.component.html',
@@ -11,9 +12,11 @@ import * as application from "tns-core-modules/application";
 })
 export class ChallengeTabsComponent implements OnInit {
 
+
     constructor(private router: RouterExtensions,
         private active: ActivatedRoute,
-        private page: Page) {
+        private page: Page,
+        private challengesService:ChallengesService) {
 
     }
 

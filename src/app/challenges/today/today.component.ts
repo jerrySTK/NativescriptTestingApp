@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Challenge } from '../models/challenge';
 import { ChallengesService } from '../challenges.service';
 import { Observable } from 'rxjs';
-import { DayStatus } from '../models/day.interface';
+import { DayStatus, IDay } from '../models/day.interface';
 import { take } from 'rxjs/operators';
 
 
@@ -14,9 +14,8 @@ import { take } from 'rxjs/operators';
 export class TodayComponent implements OnInit {
 
   private currentChallenge$: Observable<Challenge>;
-
   constructor(private challengesService: ChallengesService) {
-    this.currentChallenge$ = this.challengesService.currentChallenge;
+    this.currentChallenge$ = this.challengesService.fetchCurrentChallenge();
   }
 
   ngOnInit() {
