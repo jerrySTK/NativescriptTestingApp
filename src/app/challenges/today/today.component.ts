@@ -13,7 +13,8 @@ import { take } from 'rxjs/operators';
 })
 export class TodayComponent implements OnInit {
 
-  private currentChallenge$: Observable<Challenge>;
+  currentChallenge$: Observable<Challenge>;
+
   constructor(private challengesService: ChallengesService) {
     this.currentChallenge$ = this.challengesService.fetchCurrentChallenge();
   }

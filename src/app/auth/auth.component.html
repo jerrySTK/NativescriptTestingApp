@@ -3,9 +3,9 @@
 
 <FlexboxLayout class="nt-form form" flexDirection="column" [formGroup]="form">
     <StackLayout class="nt-input">
-        <Label text="Username" class="font-weight-bold m-b-5"></Label>
-        <TextField class="input" formControlName="username" returnKeyType="next" autocapitalizationType="none"></TextField>
-        <Label class="error" *ngIf="form.controls.username.invalid && form.controls.username.touched" text="Username is required" ></Label>
+        <Label text="Email" class="font-weight-bold m-b-5"></Label>
+        <TextField class="input" formControlName="email" returnKeyType="next" autocapitalizationType="none"></TextField>
+        <Label class="error" *ngIf="form.controls.email.invalid && form.controls.email.touched" text="Email is required" ></Label>
     </StackLayout>
     <StackLayout class="nt-input">
         <Label text="Password" class="font-weight-bold m-b-5"></Label>

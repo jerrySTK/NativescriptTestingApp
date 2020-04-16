@@ -1,0 +1,13 @@
+<StackLayout>
+    <Label [text]="isPortrait"></Label>
+    <Button text="Toggle View" (tap)="toggle()"></Button>
+
+    <StackLayout *ngIf="isPortrait == true">
+        <ns-component-one></ns-component-one>
+    </StackLayout>
+
+    <GridLayout columns="*,2*" , rows="*" *ngIf="isPortrait == false">
+        <ns-component-one col="0" row="0"></ns-component-one>
+        <ns-component-two col="1" row="0"></ns-component-two>
+    </GridLayout>
+</StackLayout>

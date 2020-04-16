@@ -20,6 +20,7 @@ export class ActionBarComponent implements OnInit {
               }
 
   ngOnInit() {
+
   }
 
   get canGoBack(){

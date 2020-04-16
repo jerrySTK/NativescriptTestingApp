@@ -72,6 +72,10 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
 
     onChangeStatus(date:Date,title:string,status:DayStatus) {
 
+        if (typeof(date) === 'string' ){
+            date = new Date(date);
+        }
+
         if (!this.getIsSettable(date.getDate())){
             return;
         }

@@ -2,15 +2,16 @@ import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppComponent } from "./app.component";
 
-// Uncomment and add to NgModule imports if you need to use two-way binding
-import { NativeScriptFormsModule  } from "nativescript-angular/forms";
-import { AuthComponent } from './auth/auth.component';
 import { AppRoutingModule } from "./app-routing.module";
 import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular/side-drawer-directives';
-import { AppSharedModule } from "./shared/modules/app-shared.module";
-import { ReactiveFormsModule } from "@angular/forms";
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
+import { AuthModule } from "./auth/auth.module";
+import { CameraComponent } from './camera/camera.component';
+import { ScreenOrientationComponent } from './screen-orientation/screen-orientation.component';
+
+import { ComponentOneComponent } from './screen-orientation/component-one/component-one.component';
+import { ComponentTwoComponent } from './screen-orientation/component-two/component-two.component';
 
 @NgModule({
     bootstrap: [
@@ -18,16 +19,17 @@ import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
     ],
     imports: [
         NativeScriptModule,
-        NativeScriptFormsModule,
-        ReactiveFormsModule,
         AppRoutingModule,
         NativeScriptUISideDrawerModule,
-        AppSharedModule,
-        NativeScriptHttpClientModule
+        NativeScriptHttpClientModule,
+        AuthModule
     ],
     declarations: [
         AppComponent,
-        AuthComponent,
+        CameraComponent,
+        ScreenOrientationComponent,
+        ComponentOneComponent,
+        ComponentTwoComponent,
     ],
     providers: [],
     schemas: [

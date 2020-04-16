@@ -4,6 +4,7 @@ import { Subscription } from "rxjs";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular/side-drawer-directives";
 
 import * as firebase from "nativescript-plugin-firebase";
+import { AuthService } from "./auth/auth.service";
 
 @Component({
     selector: "ns-app",
@@ -17,7 +18,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
     constructor(private uiService: UIService,
         private changeDetectionRef: ChangeDetectorRef,
-        private vcRef: ViewContainerRef) {
+        private vcRef: ViewContainerRef,
+        private authService: AuthService) {
             firebase.init({
                 // Optionally pass in properties for database, authentication and cloud messaging,
                 // see their respective docs.
@@ -37,9 +39,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngOnInit() {
-        this.uiService.rootVCRef = this.vcRef;
-        console.log("Entre onInit AppComponent");
-
     }
 
     ngAfterViewInit() {
@@ -59,5 +58,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
     onLogout() {
         this.uiService.setToggleDrawer();
+        this.authService.logout();
     }
 }
